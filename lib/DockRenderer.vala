@@ -981,28 +981,30 @@ namespace Plank
 		
 		void draw_urgent_glow (DockItem item, Cairo.Context cr, int64 frame_time)
 		{
-			if ((item.State & ItemState.URGENT) == 0)
-				return;
+			// DON'T DRAW URGENT GLOW PLEASE
 			
-			var diff = int64.max (0LL, frame_time - item.LastUrgent);
-			if (diff >= theme.GlowTime * 1000)
-				return;
+			//  if ((item.State & ItemState.URGENT) == 0)
+			//  	return;
 			
-			unowned PositionManager position_manager = controller.position_manager;
-			var x_offset = 0, y_offset = 0;
+			//  var diff = int64.max (0LL, frame_time - item.LastUrgent);
+			//  if (diff >= theme.GlowTime * 1000)
+			//  	return;
 			
-			if (urgent_glow_buffer == null) {
-				var urgent_color = get_styled_color ();
-				urgent_color.add_hue (theme.UrgentHueShift);
-				urgent_color.set_sat (1.0);
-				urgent_glow_buffer = theme.create_urgent_glow (position_manager.GlowSize, urgent_color, main_buffer);
-			}
+			//  unowned PositionManager position_manager = controller.position_manager;
+			//  var x_offset = 0, y_offset = 0;
 			
-			position_manager.get_urgent_glow_position (item, out x_offset, out y_offset);
+			//  if (urgent_glow_buffer == null) {
+			//  	var urgent_color = get_styled_color ();
+			//  	urgent_color.add_hue (theme.UrgentHueShift);
+			//  	urgent_color.set_sat (1.0);
+			//  	urgent_glow_buffer = theme.create_urgent_glow (position_manager.GlowSize, urgent_color, main_buffer);
+			//  }
 			
-			cr.set_source_surface (urgent_glow_buffer.Internal, x_offset, y_offset);
-			var opacity = 0.2 + (0.75 * (Math.sin (diff / (double) (theme.GlowPulseTime * 1000) * 2 * Math.PI) + 1) / 2);
-			cr.paint_with_alpha (opacity);
+			//  position_manager.get_urgent_glow_position (item, out x_offset, out y_offset);
+			
+			//  cr.set_source_surface (urgent_glow_buffer.Internal, x_offset, y_offset);
+			//  var opacity = 0.2 + (0.75 * (Math.sin (diff / (double) (theme.GlowPulseTime * 1000) * 2 * Math.PI) + 1) / 2);
+			//  cr.paint_with_alpha (opacity);
 		}
 		
 		Color get_styled_color ()

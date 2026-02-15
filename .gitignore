@@ -78,3 +78,5 @@ data/net.launchpad.plank.gschema.valid
 data/net.launchpad.plank.gschema.xml
 data/net.launchpad.plank.gschema.xml.in
 data/plank.desktop
+configure~
+config.h.in~
